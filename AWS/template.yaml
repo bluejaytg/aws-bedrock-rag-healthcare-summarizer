@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2026-03-01'
+Transform: AWS::Serverless-2026-03-01
+Description: AWS SAM deployment for Healthcare Bedrock RAG Summarizer.
+
+Resources:
+  HealthcareRAGFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: api.main.app
+      Runtime: python3.11
+      CodeUri: ./
+      MemorySize: 1024
+      Timeout: 30
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: "*"
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
