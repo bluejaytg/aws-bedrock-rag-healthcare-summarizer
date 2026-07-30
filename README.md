@@ -35,6 +35,31 @@ This project implements a secure, source-grounded Retrieval-Augmented Generation
    [/api/main.py] ──► (FastAPI Secure Endpoint)
 
 ```
+## How to Run Locally
+
+### Prerequisites
+* **Python 3.9+** installed
+* Active **AWS Account** with permissions and access granted to **AWS Bedrock models** (e.g., Anthropic Claude / Titan Embeddings)
+* Configured **AWS CLI** credentials (`aws configure`) or environment variables
+
+### Setup Steps
+```bash
+# 1. Clone the repository
+git clone [https://github.com/bluejaytg/aws-bedrock-rag-healthcare-summarizer.git](https://github.com/bluejaytg/aws-bedrock-rag-healthcare-summarizer.git)
+cd aws-bedrock-rag-healthcare-summarizer
+
+# 2. Set up and activate a Python virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Set up environment variables
+cp .env.example .env  # Add your AWS_REGION and credentials if not using default AWS CLI profile
+
+# 5. Launch the application
+streamlit run app.py  # Or 'python main.py' / 'uvicorn main:app --reload' depending on your entry point
 
 ### Core System Principles
 
